@@ -1,0 +1,42 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<div class="container">
+    <div class="columns">
+      <div class="column">
+        <div class="column is-6 is-offset-5">
+          <h1><strong>Applied jobs</strong></h1>
+        </div>
+        {% if request.user.applications.all %}
+        {% for application in request.user.applications.all %}
+        <div class="column">
+          <div class="column is-4">
+            <div class="card">
+              <div class="card-content">
+                <p class="card-header is-6">
+                  <strong>{{ application }}</strong>
+                </p>
+                <br />
+                <p class="card-subtitle is-6"><strong>Cover letter:</strong> {{ application.content }}</p>
+                <br />
+                <p class="card-subtitle is-6"><strong>Experience:</strong> {{ application.experience }}</p>
+                <br/>
+                <p class="card-footer">Applied on: {{ application.created_at }}
+                  <br/>
+                  <div class="column is-6 is-offset-4">
+                    <a href="{% url 'view_applied_job' application.id %}">
+                    <button class="button is-link">View application</button>
+                    </a>
+                  </div>
+                </p>
+              </div>
+            </div>
+        </div>
+        </div>
+        {% endfor %}
+        {%else%}
+        <p class="is-text-centered">You have not applied for any jobs yet.</p>
+        {% endif %}
+      </div>
+    </div>
+</div>
+{% endblock  %}

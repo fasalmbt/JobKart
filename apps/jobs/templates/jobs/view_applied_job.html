@@ -1,0 +1,33 @@
+{% extends 'core/base.html' %}
+{% block content %}
+  <div class="container">
+    <div class="column">
+      <h1 class="title">View Job - {{ job }}</h1>
+      <h4 class="subtitle">Hello {{ job.created_by }}, chat with recruiter</h4>
+      <h4 class="subtitle"><strong>Job title:</strong> {{ job }}</h4>
+      <h4 class="subtitle"><strong>Cover letter:</strong> {{ job.content }}</h4>
+      <h4 class="subtitle"><strong>Your experience:</strong> {{ job.experience }}</h4>
+      <h4 class="subtitle"><strong>Applied on:</strong> {{ job.created_at }}</h4>
+      <hr />
+
+      <h4 class="subtitle"><strong>Conversations</strong></h4>
+        <div class="notification">
+        {% empty %}
+        <p>No messages yet...</p>
+        <hr/>
+      <form method="post" action=".">
+        {% csrf_token %}
+        <div class="field">
+          <div class="control">
+            <textarea class="textarea is-link" name="content" id="id_content"></textarea>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <button class="button is-link">Send message</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+  {% if request.user.is_staff %}
+  <h3 class="subtitle has-text-centered is-bold">Jobs you created</h3>
+  <div class="columns is-multiline">
+    {% for job in request.user.jobs.all %}
+      <div class="column is-4">
+        <div class="card bm--card-equal-height">
+          <div class="card-content">
+            <p class="card-header is-6">
+              <strong>{{ job.title }}</strong>
+            </p>
+            <br />
+            <p class="card-subtitle is-6">{{ job.company }}</p>
+            <br />
+            <p class="card-content">{{ job.desc }}</p>
+            <a href="{% url 'job_details' job.id %}">
+              <button class="button is-link is-small">
+                  View job
+              </button>
+              </a>
+            <p class="card-footer">Posted on: {{ job.created_at }}</p>
+          </div>
+        </div>
+      </div>
+      <br/>
+    {% endfor %}
+  </div>
+  {% else %}
+  <h3 class="subtitle has-text-centered is-bold">Available Jobs</h3>
+  <div class="columns is-multiline">
+    {% for job in jobs %}
+      <div class="column is-4">
+        <div class="card bm--card-equal-height">
+          <div class="card-content">
+            <p class="card-header is-6">
+              <strong>{{ job.title }}</strong>
+            </p>
+            <br />
+            <p class="card-subtitle is-6">{{ job.company }}</p>
+            <br />
+            <p class="card-content">{{ job.desc }}</p>
+            <a href="{% url 'job_details' job.id %}">
+              <button class="button is-link is-small">
+                  View job
+              </button>
+              </a>
+            <p class="card-footer">Posted on: {{ job.created_at }}</p>
+          </div>
+        </div>
+      </div>
+      <br/>
+    {% endfor %}
+  </div>
+  {% endif %}
+    <br />
+    
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <div class="column is-6 is-offset-5">
+          <h1><strong>Add a job</strong></h1>
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <form method="post" action=".">
+              <div class="column is-6 is-offset-3">
+                {% csrf_token %}
+                <div class="field">
+                  <label>Title</label>
+                  <div class="control">
+                    <input class="input is-link" name="title" id="id_title" />
+                  </div>
+                </div>
+                <div class="field">
+                  <label>Company</label>
+                  <div class="control">
+                    <input class="input is-link" name="company" id="id_company" />
+                  </div>
+                </div>
+                <div class="field">
+                  <label>Description</label>
+                  <div class="control">
+                    <textarea class="textarea is-link" name="desc" id="id_desc"></textarea>
+                  </div>
+                </div>
+                <div class="field">
+                  <label>Long description</label>
+                  <div class="control">
+                    <textarea class="textarea is-link" name="long_desc" id="id_long_desc"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="column is-6 is-offset-5">
+                <button class="button is-link">Add job</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

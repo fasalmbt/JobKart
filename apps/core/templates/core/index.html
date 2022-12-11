@@ -1,0 +1,39 @@
+{% extends 'core/base.html' %}
+{% block content %}
+  <h3 class="subtitle has-text-centered is-bold">Latest Jobs</h3>
+  <br />
+  <div class="container">
+    <div class="column">
+      <div class="has-text-centered">
+            <img src="https://static.naukimg.com/s/7/104/assets/images/green-boy.c8b59289.svg" />
+      </div>
+      <div class="card">
+        <br/>
+        <p class="has-text-centered">If you're an employer, contact us at <strong>employer-support@jobkart</strong>
+           for verification, after registration.</p>
+        <br/>
+      </div>
+    </div>
+  </div>
+  <div class="columns">
+    {% for job in jobs %}
+      <div class="column is-4">
+        <div class="card bm--card-equal-height">
+          <div class="card-content">
+            <p class="card-header is-6"><strong>{{ job.title }}</strong></p>
+            <br/>
+            <p class="card-subtitle is-6">{{ job.company }}</p>
+            <br/>
+            <p class="card-content">{{ job.desc }}</p>
+            <a href="{% url 'job_details' job.id %}">
+            <button class="button is-link is-small">
+                View job
+            </button>
+            </a>
+            <p class="card-footer">Posted on: {{job.created_at}}</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

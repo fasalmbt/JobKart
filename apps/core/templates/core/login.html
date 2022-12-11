@@ -1,0 +1,40 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+  <div class="container">
+    <div class="columns">
+      <div class="column is-6 is-offset-3">
+        <div class="card">
+          <div class="card-content is-text-centered">
+            <div class="column has-text-centered">
+              <h1><strong>Login to Job Kart</strong></h1>
+            </div>
+            <form method="post" action=".">
+              <div class="column is-6 is-offset-3">
+                {% csrf_token %}
+                <div class="field">
+                  <label for="id_username">Username</label>
+                  <div class="control">
+                    <input type="text" class="input is-link" name="username" id="id_username" />
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="id_password">Password</label>
+                  <div class="control">
+                    <input type="password" class="input is-link" name="password" id="id_password"/>
+                  </div>
+                </div>
+              </div>
+              <br />
+              <div class="column has-text-centered">
+                <a href="{% url 'login_page' %}">
+                <button class="button is-link">Login</button>
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Job Kart</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <style>   
+      .bm--card-equal-height {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+     }
+     .bm--card-equal-height .card-footer {
+        margin-top: auto;
+     }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-item">
+        <a href="{% url 'index_page' %}">
+            <strong>
+                Job Kart
+            </strong>
+        </a>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            {%if request.user.is_authenticated %}
+            Hello {{request.user.first_name}}, &nbsp;
+            <a class="button is-link" href="{%url 'job_dashboard'%}">
+                <i class="fa-sharp fa-solid fa-user"></i>
+            </a>
+            <a class="button is-link" href="#">
+              <i class="fa-sharp fa-solid fa-bell"></i>
+            </a>
+            <!--Applied jobs-->
+            <!--if user is staff(employer/admin)-->
+            {% if request.user.is_staff %}
+            <a href="{%url 'add_job' %}" class="button is-link">
+              <i class="fa-solid fa-plus"></i>
+            </a>
+            <a href="{%url 'recieved_apps'%}" class="button is-link">
+              <i class="fa-solid fa-envelope"></i>
+            </a>
+            {% else %}
+            <!--if user is a user(job seeker)-->
+            <a href="{%url 'applied_jobs' %}" class="button is-link">
+              <i class="fa-solid fa-briefcase"></i>
+            </a>
+            {% endif %}
+            <a class="button is-danger" href="{% url 'logout' %}"><strong>Logout</strong></a>
+            {%else%}
+            <a class="button is-primary" href="{% url 'register_page' %}"><strong>Register</strong></a>
+            <a class="button is-secondary" href="{% url 'login_page' %}"><strong>Login</strong></a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </nav>
+    <section class="section">
+      
+      {% block content %}
+
+      {% endblock %}
+    </section>
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <strong>Job Kart</strong>&copy;| 2022
+        </p>
+      </div>
+    </footer>
+    
+  </body>
+  
+</html>

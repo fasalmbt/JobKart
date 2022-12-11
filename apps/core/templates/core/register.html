@@ -1,0 +1,60 @@
+{% extends 'core/base.html' %}
+{% block content %}
+  <div class="container">
+    <div class="columns">
+      <div class="column is-6 is-offset-3">
+        <div class="column has-text-centered">
+          <h1><strong>Register to Job Kart</strong></h1>
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <form method="post" action=".">
+              <div class="column is-6 is-offset-3">
+                {% csrf_token %}
+                <div class="field">
+                  <label for="id_username">Username</label>
+                  <div class="control">
+                    <input type="text" class="input is-link" name="username" id="id_username" />
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="id_first_name">First name</label>
+                  <div class="control">
+                    <input type="text" class="input is-link" name="first_name" id="id_first_name" />
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="id_last_name">Last name</label>
+                  <div class="control">
+                    <input type="text" class="input is-link" name="last_name" id="id_last_name" />
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="id_email">Email address</label>
+                  <div class="control">
+                    <input type="email" class="input is-link" name="email" id="id_email" />
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="id_password1">Password</label>
+                  <div class="control">
+                    <input type="password" class="input is-link" name="password1" id="id_password1" />
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="id_password2">Confirm password</label>
+                  <div class="control">
+                    <input type="password" class="input is-link" name="password2" id="id_password2" />
+                  </div>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <button class="button is-link">Register</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

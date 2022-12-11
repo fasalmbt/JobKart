@@ -1,0 +1,41 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <div class="column is-6 is-offset-4">
+          <h1><strong>Apply for {{ job.title }} at {{ job.company }}</strong></h1>
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <form method="post" action=".">
+              <div class="column is-6 is-offset-3">
+                {% csrf_token %}
+                <div class="field">
+                  <label>Cover letter</label>
+                  <div class="control">
+                    <textarea class="textarea is-link" name="content" id="id_content">
+
+                    </textarea>                  
+                  </div>
+                </div>
+                <div class="field">
+                  <label>Experience</label>
+                  <div class="control">
+                    <textarea class="textarea is-link" name="experience" id="id_experience">
+
+                    </textarea>                  
+                  </div>
+                </div>
+              </div>
+              <div class="column is-6 is-offset-5">
+                <button class="button is-link">Apply</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+  <nav class="breadcrumb is-centered" aria-label="breadcrumbs">
+    <ul>
+      <li>Jobs&nbsp;</li>
+      <li class="is-active">&nbsp;{{ job_det.title }}</li>
+      <li class="is-active">&nbsp;{{ job_det.company }}</li>
+    </ul>
+  </nav>
+  <div class="container">
+    <div class="column">
+      <div class="column is-6 is-offset-3">
+        <div class="card">
+          <div class="card-content">
+            <p class="card-content">
+              <strong>Job title</strong>
+              <br />
+              {{ job_det.title }}
+              <br />
+              <strong>Company</strong>
+              <br />
+              {{ job_det.company }}
+              <br />
+              <strong>Experience</strong>
+              <br />
+              {{ job_det.desc }}
+              <br />
+              <strong>Description</strong>
+              <br />
+              {{ job_det.long_desc }}
+            </p>
+          </div>
+          <div class="column is-6 is-offset-4">
+            <a href="{% url 'apply_job' job_det.id %}">
+            <button class="button is-link">Apply for this job</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
