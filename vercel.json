@@ -4,10 +4,8 @@
         "use": "@ardnt/vercel-python-wsgi",
         "config": { "maxLambdaSize": "15mb" }
     }],
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "jobkart/wsgi.py"
-        }
-    ]
+    "routes": [{
+        "src": "/(.*)",
+        "dest": "jobkart/wsgi.py"
+    }]
 }
