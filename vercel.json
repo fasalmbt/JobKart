@@ -1,0 +1,14 @@
+{
+  "builds": [
+    {
+      "src": "jobkart/wsgi.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "jobkart/wsgi.py"
+    }
+  ]
+}
