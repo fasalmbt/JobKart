@@ -1,11 +1,16 @@
 {
+    "version": 1,
     "builds": [{
-        "src": "jobkart/wsgi.py",
-        "use": "@natanffs/vercel-python-wsgi",
-        "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
-    }],
-    "routes": [{
-        "src": "/(.*)",
-        "dest": "jobkart/wsgi.py"
-    }]
+            "src": "jobkart/wsgi.py",
+            "use": "@vercel/python",
+            "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+        },
+        {
+            "src": "build_files.sh",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "staticfiles"
+            }
+        }
+    ]
 }
