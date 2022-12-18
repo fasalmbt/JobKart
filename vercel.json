@@ -1,7 +1,7 @@
 {
   "builds": [
     {
-      "src": "*.py",
+      "src": "jobkart/wsgi.py",
       "use": "@vercel/python"
     }
   ]
