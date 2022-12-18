@@ -27,7 +27,7 @@ class ApplyJobFormTestCase(TestCase):
   def test_apply_form_valid(self):
     form_data = {
       'content': 'This is a coverletter for no reason',
-      'experience': '1-3 years'
+      'experience': '2 years'
     }
     form = ApplyForm(data=form_data)
     self.assertTrue(form.is_valid())
